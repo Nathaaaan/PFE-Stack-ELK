@@ -54,6 +54,9 @@ services:
         ELK_VERSION: $ELK_VERSION
     volumes:
       - type: bind
+        source: ./temp
+        target: /usr/tmp
+      - type: bind
         source: ./logstash2/config/logstash.yml
         target: /usr/share/logstash/config/logstash.yml
         read_only: true
@@ -77,6 +80,9 @@ services:
       args:
         ELK_VERSION: $ELK_VERSION
     volumes:
+      - type: bind
+        source: ./temp
+        target: /usr/tmp
       - type: bind
         source: ./logstash3/config/logstash.yml
         target: /usr/share/logstash/config/logstash.yml
